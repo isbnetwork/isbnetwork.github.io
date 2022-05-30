@@ -1,0 +1,75 @@
+<ion-content fullscreen="true">
+
+  <svg class="back-blob" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    <path fill="#78bec31f"
+      d="M68.6,-33.5C81.6,-17.2,79.6,13.8,65.7,37.6C51.8,61.3,25.9,77.8,2.1,76.6C-21.7,75.4,-43.5,56.5,-54.2,34.6C-65,12.7,-64.8,-12.3,-53.9,-27.4C-43,-42.4,-21.5,-47.6,3.2,-49.4C27.9,-51.2,55.7,-49.7,68.6,-33.5Z"
+      transform="translate(100 100)" />
+  </svg>
+  <div  *ngIf="!mobiSupport.isMobile" class="BG" id="BG1" ></div>
+  <div  *ngIf="mobiSupport.isMobile" class="BG" id="BG2" ></div>
+  <div class="ion-padding form-content">
+
+    <!-- <form  [formGroup]="form"  class="ion-padding form-validation"  [class.submited]="submited" >
+      <div class="ion-text-center title-name">Đăng nhập tài khoản</div>
+      <div class="wrap-input">
+        <input  [formControlName]="FormField.email" class="input" type="text" inputmode="email" name="user-email" placeholder="Nhập địa chỉ email">
+      </div>
+
+      <div class="wrap-input">
+        <input [formControlName]="FormField.password" class="input" type="password" name="password" placeholder="Nhập mật khẩu">
+      </div>
+
+      <div class="container-form-btn">
+        <button  (click)="login()"  class="form-btn custom-font">
+          Đăng nhập
+        </button>
+      </div>
+      <div class="container-form-btn register">
+        <p routerLink="/forms/register" class="ion-text-center custom-font"> Đăng ký tài khoản </p>
+        <p class="ion-text-center custom-font"> &nbsp; </p>
+        <ion-icon (click)="installApp()" name="download"></ion-icon>
+      </div>
+
+    </form> -->
+       <form  class="ion-padding form-validation"  >
+        <img src="assets/icon/logo-isb-full.png" >
+<!--
+        <nz-carousel nzAutoPlay>
+          <div nz-carousel-content *ngFor="let index of array">
+          </div>
+        </nz-carousel> -->
+      <div class="ion-text-center title-name mt-3">
+        <div><h1> {{ rxTime | date: 'hh:mm:ss a' }} </h1></div>
+      </div>
+      <div class="wrap-input mb-3">
+        <input class="input" [(ngModel)]="code" type="code" name="code" placeholder="Nhập code wifi">
+      </div>
+      <div class="container-form-btn mb-3">
+        <button  (click)="loginByCode()"  class="form-btn custom-font code-login">
+          <ion-icon
+          style="
+          margin-right: 8px;
+          font-size: 20px;"
+           name="qr-code-outline"></ion-icon>
+          Kết nối Wifi bằng code
+        </button>
+      </div>
+
+      <div class="container-form-btn">
+        <button  (click)="loginGoogle()"  class="form-btn custom-font">
+          <ion-icon style="
+          margin-right: 8px;
+          font-size: 20px;"
+          name="logo-google"></ion-icon>  Kết nối Wifi bằng ISB Email
+        </button>
+      </div>
+      <!-- <div class="container-form-btn register">
+        <p routerLink="/forms/register" class="ion-text-center custom-font"> Đăng ký tài khoản </p>
+        <p class="ion-text-center custom-font"> &nbsp; </p>
+        <ion-icon (click)="installApp()" name="download"></ion-icon>
+      </div> -->
+
+    </form>
+  </div>
+
+</ion-content>

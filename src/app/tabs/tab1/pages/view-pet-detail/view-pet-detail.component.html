@@ -1,0 +1,6 @@
+<div class="pet-land-body">
+  <div class="content-wraper">
+    <app-view-pet-detail-c (onEditPet)="editPet($event)" (onEditHistory)="editHistory($event)" (onCreateHistory)="createHistory($event)" *ngIf="data && !mobileSupportServive.isMobile" [data]="data" ></app-view-pet-detail-c>
+  </div>
+  <app-pets-image-view *ngIf="data && !mobileSupportServive.isMobile" [data]="data.histories"></app-pets-image-view>
+</div>

@@ -1,0 +1,280 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import "~@ionic/angular/css/display.css";
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+@import "~ng-zorro-antd/ng-zorro-antd.min.css";
+
+:root {
+  --color1: #ffffff;
+  --color2: #78bec3;
+  --color3: rgba(120, 190, 195, 0.2);
+  --color4: #acb3bf;
+  --color5: #ff7575;
+  --color6: #ff0000;
+  --color7: rgba(255, 0, 0, 0.2);
+  --color8: #feea37;
+  --color9: rgba(255, 230, 0, 0.2);
+}
+body {
+  background: var(--color2);
+  font-family: var(--ion-font-family, inherit) ;
+}
+
+// custom date picker
+.schedule-main-content {
+  .ant-picker-cell-in-view.ant-picker-cell-selected .ant-picker-cell-inner {
+    background-color: var(--color5);
+    border-radius: 50%;
+  }
+  .ant-picker-header {
+    color: var(--color2);
+  }
+}
+//
+.my-custom-class {
+  border-top: none !important;
+  span {
+    color: black !important;
+  }
+  .cal-event {
+    border-radius: 0px !important;
+    border-left: 3px solid;
+    border-bottom: 0px;
+    border-right: 0px;
+    border-top: 0px;
+  }
+}
+.modal-custom-class {
+  .modal-wrapper {
+    width: 385px;
+    border-radius: 30px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  }
+}
+.modal-custom-full-screem {
+  app-header-mobile-c  {
+    display: block !important;
+  }
+  app-add-calendar,  app-view-customer-c, app-view-pet-detail-c, app-pet-history-c {
+    background-color: var(--color2);
+  }
+  display: flex;
+  align-items: flex-start;
+  .modal-wrapper {
+    width: 100vw;
+    height: calc(100vh - 50px) !important;
+  }
+  .form-validation {
+    padding: 20px  0px 70px 0px !important;
+
+    border-radius: 30px 30px 0px 0px !important;
+    background-color: var(--color1);
+    height: calc(100vh - 100px);
+    overflow-y: auto !important;
+    // height: 300px;
+    &.calander-cus {
+      padding: 14px 30px !important;
+      height: calc(100vh - 226px) !important;
+    }
+
+  }
+  app-add-calendar {
+    .form-btn {
+      &.custom-font {
+        margin-bottom: 60px;
+      }
+    }
+  }
+  .personal-image {
+    figure {
+      width: 100% !important;
+      height: 100% !important;
+      img {
+        width: 100% !important;
+        height: 100% !important;
+      }
+    }
+  }
+}
+
+.form-validation {
+  input,
+  textarea,
+  ion-select {
+    background-color: var(--color1) !important;
+    padding: 8px 20px !important;
+    font-size: 16px !important;
+    color: #4d4d4d99 !important;
+    border: 1px solid #b3b3b3 !important;
+    outline: none !important;
+    width: 100% !important;
+    caret-color: var(--color2) !important;
+    &:focus,
+    &:focus-within {
+      border-color: var(--color2) !important;
+    }
+  }
+  textarea {
+    border-radius: 20px !important;
+  }
+  &.submited {
+    input,
+    ion-select {
+      &.ng-invalid {
+        border-color: var(--color6) !important;
+      }
+    }
+    ion-input {
+      &.ion-invalid {
+        input {
+          border-color: var(--color6) !important;
+        }
+      }
+    }
+
+    nz-date-picker {
+      &.ng-invalid {
+        input {
+          border-color: var(--color6) !important;
+        }
+      }
+    }
+  }
+  &.submited {
+    input {
+      &.ng-invalid {
+        border-color: var(--color6) !important;
+      }
+    }
+  }
+  input,
+  ion-select {
+    border-radius: 40px !important;
+  }
+}
+.form-validation, .button-submit {
+  input[disabled] , ion-select[aria-disabled] {
+    background-color: #dee2e6  !important;
+    border: 1px solid #b3b3b3 !important;
+    color: #4d4d4d99 !important;
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  .form-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+    width: 100%;
+    height: 42px;
+    background-color:  #78BEC3;
+    border-radius: 20px;
+    font-size: 14px;
+    color: #FFFFFF;
+    transition: all 0.4s;
+    box-shadow: 0 5px 20px 0px rgb(57 71 82 / 30%);
+  }
+
+  .form-btn:hover {
+    background-color: #28333b;
+    box-shadow: 0 10px 30px 0px rgba(57, 71, 82, 0.8);
+  }
+}
+
+ion-button {
+  --border-radius: 31px;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+  background: lightgray;
+}
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px var(--color2);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 15px;
+  -webkit-box-shadow: inset 0 0 6px rgba(192, 172, 172, 0.5);
+  background: var(--color2);
+}
+::placeholder {
+  color: #4d4d4d99;
+  opacity: 0.5;
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: #4d4d4d99;
+  opacity: 0.5;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: #4d4d4d99;
+  opacity: 0.5;
+}
+.content-list {
+  ion-searchbar {
+    .searchbar-input.sc-ion-searchbar-md {
+      box-shadow:  none;
+      line-height: 40px !important;
+      border: 1px solid #dee2e6 !important;
+      border-radius: 9px  !important;
+    }
+    .searchbar-search-icon.sc-ion-searchbar-md {
+      top: 17px;
+    }
+  }
+}
+.mobile {
+  .date-picker-for-mobile {
+    display: flex !important;
+  }
+  .schedule-main-calander {
+    border-radius: 30px 30px 0px 0px !important;
+    // padding-top: 0px !important;
+    height: calc(100vh - 247px) !important;
+    background: white;
+    padding-bottom: 100px;
+    .cal-week-view .cal-hour:not(:last-child) .cal-hour-segment, .cal-week-view .cal-hour:last-child :not(:last-child) .cal-hour-segment {
+      border-bottom-color: transparent !important;
+  }
+  .shadow-line {
+    box-shadow: none !important;
+  }
+  .cal-week-view {
+    border-top: solid 1px transparent !important;
+  }
+  }
+  .schedule-main-content {
+    background-color: var(--color2);
+    .schedule-date-picker {
+      display: none;
+    }
+  }
+}

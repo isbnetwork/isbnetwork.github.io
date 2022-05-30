@@ -1,0 +1,82 @@
+<ion-header *ngIf="!popup">
+  <ion-toolbar style="height: 54px" color="primary">
+    <ion-title style="height: 54px; display: flex; align-items: center">{{ title }}
+    </ion-title>
+    <ion-buttons fill="outline" slot="end">
+      <ion-button (click)="close()">
+        <ion-icon style="
+          font-size: 30px;
+          padding-right: 2px;
+          padding-top: 8px;" name="close-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-header *ngIf="popup">
+  <app-header-mobile-c (onBack)="close()"></app-header-mobile-c>
+</ion-header>
+<div style=" overflow-y: auto">
+  <form [formGroup]="form" class="form-validation calander-cus" [class.submited]="submited">
+    <div class=" auto-complete">
+    <div class="lable-title">Khách hàng</div>
+    <ion-input placeholder="Tên khách hàng" [formControlName]="FormField.userName" type="text"
+      (input)="onSearchCus($event)"></ion-input>
+    <!-- Dropdown Menu -->
+    <div *ngIf="openDrop" class="drop-down">
+      <table>
+        <tr class="item" *ngFor="let cus of filterListCus" (click)="onSelectItem(cus)">
+          <td>
+            <!-- <div class="avatar">
+          <img [src]="cus.avatar" alt="avatar" width="40" height="40">
+        </div> -->
+          </td>
+          <td>{{cus.fullName}}</td>
+          <td>{{cus.phone}}</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="lable-title">Thú cưng</div>
+    <ion-input placeholder="Tên thú cưng" [formControlName]="FormField.petName" type="text"></ion-input>
+    <div class="lable-title">Chi tiết cuộc hẹn</div>
+    <ion-select [formControlName]="FormField.priority">
+      <ion-select-option value="RQT">Tái Vaccine sổ giun</ion-select-option>
+      <ion-select-option value="QT">Tái khám</ion-select-option>
+      <ion-select-option value="BT">Lịch hẹn</ion-select-option>
+    </ion-select>
+    <div class="lable-title">Chi Nhánh</div>
+    <ion-select [formControlName]="FormField.brand">
+      <ion-select-option *ngFor="let item of brands"  [value]="item.brandCode">{{item.brandName}}</ion-select-option>
+    </ion-select>
+    <div class="lable-title">Thời gian bắt đầu</div>
+    <nz-date-picker (click)=" mobileDateTime()" style="width: 100%; border: 0px; padding: 0px"
+      [nzShowTime]="true" [nzDisabledTime]="disabledDateTime" nzPlaceHolder="Chọn thời gian bắt đầu "
+      nzFormat="EEEE, dd.MM.yyyy vào HH:mm:ss giờ" [formControlName]="FormField.time"></nz-date-picker>
+
+    <ion-datetime #popoverDatetime style="display: none;" [yearValues]="yearValues" hourValues="8,9,10,11,12,13,14,15,16,17,18,19,20"
+      minuteValues="0,15,30,45" locale="vi-VN" displayFormat="DD MM YYYY HH:mm"
+      (ionChange)="valueDateChange(popoverDatetime.value)">
+    </ion-datetime>
+    <div class="lable-title">&nbsp;</div>
+    <ion-textarea [formControlName]="FormField.note" placeholder="Ghi chú dành cho nhân viên" [rows]="3"
+      formControlName="note"></ion-textarea>
+      </div>
+  </form>
+</div>
+<div class="ion-padding button-submit" style="padding-top: 0px;">
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <button style="margin-top: 12px;" (click)="submit()" class="form-btn custom-font">
+          {{ btnTitle }}
+        </button>
+      </ion-col>
+      <ion-col *ngIf="isEdit">
+        <button style="margin-top: 12px; background-color: var(--color5);" (click)="remove()"
+          class="form-btn custom-font">
+          <ion-icon name="trash-outline"></ion-icon>
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</div>

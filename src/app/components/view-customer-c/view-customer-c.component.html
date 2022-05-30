@@ -1,0 +1,106 @@
+<app-header-mobile-c (onBack)="back($event)"></app-header-mobile-c>
+<div class="form-validation">
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <div class="title-name">
+          <div class="name">{{data.fullName}}
+            <ion-icon (click)="onEditCustomer.emit(data)" class="edit-name" name="create-outline"></ion-icon>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <div class="row-item">
+          <div class="icon-l">
+            <ion-icon name="call-outline"></ion-icon>
+          </div>
+          <div class="lable-l">
+            {{data.phone}}
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <div class="row-item">
+          <div class="icon-l">
+            <ion-icon name="location-outline"></ion-icon>
+          </div>
+          <div class="lable-l">
+            {{data.address}}
+          </div>
+        </div>
+
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <div class="list-pet">
+          <div class="pet-item" *ngFor="let item of data.pets">
+            <div class="personal-image">
+
+              <div class="action">
+                <ion-icon (click)="onEditPet.emit(item)" name="create-outline" class="item-top-edit"></ion-icon>
+                <ion-icon (click)="onDelete(item)" name="trash-outline" class="item-top-trash"></ion-icon>
+              </div>
+              <label (click)="onViewPet.emit(item)" class="label">
+                <figure class="personal-figure">
+                  <img [src]="item.avatar" class="personal-avatar" alt="avatar">
+                </figure>
+                <ion-icon (click)="onEditPet.emit(item)" class="avatar-custom-icon" name="camera-outline"></ion-icon>
+              </label>
+              <div (click)="onViewPet.emit(item)" style="font-weight: bold;">{{item.name}}</div>
+              <div (click)="onViewPet.emit(item)" style="color: #9B9B9B; padding-bottom: 8px;"> {{item.breed}} -
+                {{item.species}}</div>
+            </div>
+            <!-- <div class=" icon-trash">
+              <ion-icon (click)="onDelete(item)" name="trash-outline"></ion-icon>
+            </div> -->
+          </div>
+          <div (click)="onNewPet.emit(data)" class="pet-item">
+            <div style="
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+            " class="personal-image">
+              <div class="icon-push">
+                <ion-icon name="add-outline"></ion-icon>
+              </div>
+              <div style="line-height: 31px;color: var(--color2); font-weight: bold;">Thêm thú cưng</div>
+            </div>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <!-- LIST BOOKING -->
+    <ion-row>
+      <ion-col>
+        <div class="history-c">
+          <ion-icon class="icon-t" name="calendar-outline"></ion-icon>
+          <div class="title-t">
+            Danh sách lịch hẹn
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <table>
+          <tr>
+            <th>Ngày hẹn </th>
+            <th>Tên thú cưng</th>
+
+          </tr>
+          <tr *ngFor="let item of listBookingOfCus" >
+            <td (click)="onOpenBooking(item)" style=" width: 106px; text-decoration: underline; cursor: pointer; color: var(--color2);"> {{item.time | date: 'dd.MM.yyyy'}} </td>
+            <td >{{item.petName}}</td>
+          </tr>
+        </table>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</div>

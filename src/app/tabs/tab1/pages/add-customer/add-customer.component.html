@@ -1,0 +1,7 @@
+<div class="pet-land-body">
+  <div class="content-wraper">
+    <app-add-customer-c *ngIf="data && !mobileSupportServive.isMobile"
+     (onSubmit)="submit($event)"
+      [data]="data"></app-add-customer-c>
+  </div>
+</div>

@@ -1,0 +1,97 @@
+.shadow-line {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.date-picker-for-mobile {
+  display: none;
+  flex-direction: column; padding: 24px;
+}
+.header-time  {
+  color: white; flex: 1 ; display: flex; justify-items: center; align-items: center; justify-content: center;
+}
+.body-time {
+  position: relative; color: white; flex: 1; display: flex; justify-items: center; align-items: center;justify-content: center;
+  .day-time {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    .dot {
+      position: absolute;
+      top: -8px;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background-color: #ff7575;
+    }
+  }
+}
+.active-day {
+  background-color: var(--color5);
+}
+.custom-calander {
+  position: relative;
+  .dot {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: #ff7575;
+  }
+}
+.schedule-main-content {
+  display: flex;
+  flex-direction:column;
+  .schedule-date-picker {
+    padding: 5px;
+    padding-top: 20px;
+    width: 400px;
+  }
+  .schedule-main-calander {
+    width: 100%;
+    height: 100vh;
+    overflow-y: auto;
+    padding-top: 20px;
+  }
+}
+
+.action-group {
+  padding-bottom: 5px;
+  padding-top: 20px;
+  display: none;
+  ion-button {
+    margin-top: 15px;
+  }
+  .active {
+    button {
+      color: var(--color1);
+      background-color: var(--color2);
+    }
+  }
+}
+.schedule-main-content {
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  .ant-picker-cell-in-view.ant-picker-cell-selected .ant-picker-cell-inner {
+    background-color: var(--color2) ;
+  }
+}
+
+@media only screen and (min-device-width: 768px) {
+  .schedule-main-content {
+    flex-direction: row;
+    .action-group {
+      display: block;
+    }
+  }
+}
+
+:host {
+  ion-button {
+    &.active {
+      --background: var(--color2);
+      --ion-color-primary: var(--color1)
+    }
+  }
+}

@@ -1,0 +1,168 @@
+
+#chart {
+  width: 300px;
+  height: 300px;
+}
+apx-chart {
+  width: 100%;
+}
+#chart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto;
+  max-width: 500px;
+  min-height: calc(100% - 323px);
+}
+.label {
+  position: relative;
+}
+.time-visited {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+  .item-lv1 {
+    width: 50%;
+    align-items: center;
+    justify-content: center;
+    .item-time {
+      display: flex;
+      justify-content: center;
+      .icon-plush {
+        width: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background-color: var(--color2);
+        color: var(--color1);
+        font-size: 19px;
+      }
+      background: #FFFFFF;
+      border: 0.5px solid rgba(208, 211, 217, 0.9);
+      box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.15);
+      border-radius: 30px;
+      margin: 3px;
+      padding: 9px;
+      font-weight: bold;
+      text-align: center;
+      cursor: pointer;
+      &:hover {
+        background-color: #78bec342;
+      }
+    }
+  }
+
+}
+.history-c {
+  display: flex;
+  align-items: center;
+  .icon-t {
+    color: var(--color2);
+    font-size: 25px;
+    padding-right: 8px;
+  }
+  .title-t {
+    font-weight: bold;
+    font-size: 16px;
+  }
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+th, td {
+  padding: 8px;
+}
+table, td, th {
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.title-name {
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 21px;
+  text-align: center;
+  padding-bottom: 12px;
+}
+
+:host{
+  .avatar-custom-icon {
+    position: absolute;
+    bottom: 4px;
+    right: 11px;
+    color: var(--color1);
+    background: var(--color2);
+    border-radius: 50%;
+    padding: 4px;
+  }
+  nz-progress {
+    position: absolute;
+    right: 101px;
+    top: -6px;
+  }
+}
+
+.personal-image {
+  text-align: center;
+  position: relative;
+}
+.personal-image input[type="file"] {
+  display: none;
+}
+.personal-figure {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  margin-bottom: 0px;
+}
+.personal-avatar {
+  cursor: pointer;
+  width: 120px;
+  height: 120px;
+  box-sizing: border-box;
+  border-radius: 100%;
+  border: 2px solid var(--color2);
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.2);
+  transition: all ease-in-out .3s;
+}
+.personal-avatar:hover {
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.5);
+}
+.personal-figcaption {
+  cursor: pointer;
+  position: absolute;
+  top: 0px;
+  width: inherit;
+  height: inherit;
+  border-radius: 100%;
+  opacity: 0;
+  background-color: rgba(0, 0, 0, 0);
+  transition: all ease-in-out .3s;
+}
+.personal-figcaption:hover {
+  opacity: 1;
+  background-color: rgba(0, 0, 0, .5);
+}
+.personal-figcaption > img {
+  margin-top: 32.5px;
+  width: 50px;
+  height: 50px;
+}
+.booking-btn {
+    display: flex;
+    justify-content: center;
+    background: #FFFFFF;
+    border: 0.5px solid rgba(208, 211, 217, 0.9);
+    box-shadow: 0px 1px 1px rgb(0 0 0 / 15%);
+    border-radius: 30px;
+    margin: 3px;
+    padding: 9px;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+}

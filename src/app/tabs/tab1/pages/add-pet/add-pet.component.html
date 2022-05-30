@@ -1,0 +1,5 @@
+<div class="pet-land-body">
+  <div class="content-wraper">
+    <app-add-pet-c  (onBack)="back($event)"  *ngIf="data && !mobileSupportServive.isMobile" (onSubmit)="submit($event)" [data]="data"></app-add-pet-c>
+  </div>
+</div>

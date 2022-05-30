@@ -1,0 +1,17 @@
+ion-content {
+  --background: var(--color2) ;
+}
+.content-details {
+  border-left: 1px solid #dee2e6;
+  flex: 1;
+  background: white;
+  position: relative;
+}
+.content-details, .mobile-support {
+  display:  none ;
+}
+@media only screen and (min-device-width: 768px) {
+  .content-details  {
+    display:  block;
+  }
+}

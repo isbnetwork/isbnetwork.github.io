@@ -1,0 +1,21 @@
+<div >
+  <div class="header-v" >
+      <div class="icon-v">
+        <ion-icon name="image-outline"></ion-icon>
+      </div>
+      <div class="title-v">
+        Hình ảnh thú cưng khi đến Petland
+      </div>
+  </div>
+  <div class="image-c" *ngFor="let item of data">
+    <div class="time-action">
+      Ngày  {{item.date | date: 'dd.MM.yyyy'}}
+    </div>
+    <div class="item-c">
+      <nz-image-group>
+        <img *ngFor="let img of item.images" nz-image width="120px" height="120px" [nzSrc]="img" alt="" />
+      </nz-image-group>
+    </div>
+  </div>
+</div>
+

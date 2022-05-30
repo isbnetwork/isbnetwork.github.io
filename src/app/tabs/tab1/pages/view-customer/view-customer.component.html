@@ -1,0 +1,7 @@
+<div class="pet-land-body">
+  <div class="content-wraper">
+    <app-view-customer-c *ngIf="data &&  !mobileSupportServive.isMobile" (onEditCustomer)="editCustomer($event)"
+      (onEditPet)="editPet($event)" (onDeletePet)="deletePet($event)" (onNewPet)="newPet($event)"
+      (onViewPet)="viewPet($event)" [data]="data"></app-view-customer-c>
+  </div>
+</div>

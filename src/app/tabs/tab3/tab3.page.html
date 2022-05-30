@@ -1,0 +1,10 @@
+<ion-content [fullscreen]="true">
+  <div style=" display: flex;">
+    <app-list-c [title]="title" (onScrollDownEnd)="scrollDownEnd()" (onCrate)="create($event)"
+      (onSelect)="selectRow($event)" (onSearch)="searchByName($event)" [data]="item$ | async">
+    </app-list-c>
+    <div class="content-details">
+      <ion-router-outlet></ion-router-outlet>
+    </div>
+  </div>
+</ion-content>

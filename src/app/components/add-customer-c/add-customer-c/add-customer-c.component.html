@@ -1,0 +1,38 @@
+<form style="padding: 40px 30px 30px 30px;" [formGroup]="form" class="form-validation" [class.submited]="submited">
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <div style="display: flex; position: relative; justify-content: center; align-items: center;">
+          <ion-icon *ngIf="popup" (click)="onBack.emit(data)" class="icon-back" name="arrow-back-outline"></ion-icon>
+          <div class="title-name">
+            Thông tin khách hàng
+          </div>
+        </div>
+
+
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-input [formControlName]="FormField.fullName" placeholder="Họ và tên khách hàng" type="text"></ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-input [formControlName]="FormField.phone" placeholder="Số điện thoại" type="text"></ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-input [formControlName]="FormField.address" placeholder="Địa chỉ" type="text"></ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <button style="margin-top: 12px;" (click)="submit()" class="form-btn custom-font">
+          Hoàn thành
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</form>

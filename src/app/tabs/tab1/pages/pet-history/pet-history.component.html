@@ -1,0 +1,6 @@
+<div class="pet-land-body">
+  <div class="content-wraper">
+    <app-pet-history-c *ngIf="data && !mobileSupportServive.isMobile" (onBack)="back($event)" (onSubmit)="submit($event)" [data]="data"></app-pet-history-c>
+  </div>
+  <app-pets-image-view *ngIf="dataPet  && !mobileSupportServive.isMobile" [data]="dataPet.histories"></app-pets-image-view>
+</div>

@@ -1,0 +1,93 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button icon="chevron-back" defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <div class="back-circle"></div>
+    <ion-title class="ion-text-center custom-font">Đăng ký</ion-title>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon slot="icon-only" name="ellipsis-horizontal-outline"></ion-icon>
+      </ion-button>
+
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+
+<ion-content fullscreen="true">
+
+  <svg class="back-blob" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    <path fill="#78bec31f"
+      d="M68.6,-33.5C81.6,-17.2,79.6,13.8,65.7,37.6C51.8,61.3,25.9,77.8,2.1,76.6C-21.7,75.4,-43.5,56.5,-54.2,34.6C-65,12.7,-64.8,-12.3,-53.9,-27.4C-43,-42.4,-21.5,-47.6,3.2,-49.4C27.9,-51.2,55.7,-49.7,68.6,-33.5Z"
+      transform="translate(100 100)" />
+  </svg>
+
+  <div class="ion-padding form-content">
+    <form [formGroup]="form" class="ion-padding form-validation"  [class.submited]="submited" >
+
+
+      <div class="wrap-input" style="margin-bottom: 16px;">
+        <input  [formControlName]="FormField.displayName" class="input" type="text"  type="search" name="fullName"
+          placeholder="Họ và tên của bạn">
+      </div>
+      <div class="wrap-input" style="box-shadow: 0 4px 6px 0 #3947521f;">
+        <div class="lable-title">Ngày sinh</div>
+        <ion-row>
+          <ion-col>
+            <ion-select  [formControlName]="FormField.day">
+              <ion-select-option *ngFor="let value of optionDay" [value]="value">{{value}}</ion-select-option>
+            </ion-select>
+          </ion-col>
+          <ion-col>
+            <ion-select  [formControlName]="FormField.month">
+              <ion-select-option *ngFor="let value of optionMonth" [value]="value">{{value}}</ion-select-option>
+            </ion-select>
+          </ion-col>
+          <ion-col>
+            <ion-select  [formControlName]="FormField.year">
+              <ion-select-option *ngFor="let value of optionYear" [value]="value">{{value}}</ion-select-option>
+            </ion-select>
+          </ion-col>
+        </ion-row>
+
+      </div>
+
+      <div class="wrap-input">
+        <input  [formControlName]="FormField.passport" class="input" type="text"  type="text" name="user-name"
+          placeholder="Số CMND/CCCD">
+      </div>
+
+      <div class="wrap-input">
+        <input  [formControlName]="FormField.phone" class="input" type="text"  type="text" name="phone" placeholder="Số điện thoại">
+      </div>
+      <div class="wrap-input">
+        <input  [formControlName]="FormField.email" class="input" type="text"  type="text" name="email" placeholder="Email đăng nhập">
+      </div>
+
+      <div class="wrap-input">
+        <input  [formControlName]="FormField.password" class="input" type="password" inputmode="password" name="password" placeholder="Mật khẩu">
+      </div>
+
+      <div class="wrap-input">
+        <input  [formControlName]="FormField.confirmPassword" class="input" type="password" name="password2" placeholder="Nhập lại mật khẩu">
+      </div>
+
+      <div class="container-form-btn">
+        <button (click)="register()"  class="form-btn custom-font">
+          Đăng ký tài khoản
+        </button>
+      </div>
+
+    </form>
+  </div>
+
+</ion-content>
+
+
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <p class="ion-text-center custom-font">Tôi đã có tài khoản? <a routerLink="/forms/login">Đăng nhập</a></p>
+  </ion-toolbar>
+</ion-footer>

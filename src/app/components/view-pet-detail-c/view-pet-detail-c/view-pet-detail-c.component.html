@@ -1,0 +1,97 @@
+<app-header-mobile-c (onBack)="back($event)" *ngIf="popup"></app-header-mobile-c>
+<div class="form-validation">
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <div (click)="onEditPet.emit(data)" class="personal-image">
+          <label class="label">
+            <figure class="personal-figure">
+              <img [src]="data.avatar" class="personal-avatar" alt="avatar">
+              <figcaption class="personal-figcaption">
+                <img src="assets/pets/camera-white.png">
+              </figcaption>
+            </figure>
+            <ion-icon class="avatar-custom-icon" name="camera-outline"></ion-icon>
+          </label>
+          <!-- <nz-progress *ngIf="percentageChanges$  | async as perc" [nzPercent]="perc.percentage" nzType="circle"></nz-progress> -->
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <div class="title-name">
+          {{data.name}}
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <table>
+          <tr>
+            <td>Loài: <b> {{data.breed}}</b></td>
+            <td>Giới tính: <b>{{data.sex === 'MALE' ? 'Đực' : 'Cái'}}</b></td>
+          </tr>
+          <tr>
+            <td>Giống: <b>{{data.species}}</b></td>
+            <td>Ngày Sinh: <b>{{data.birthDay}}</b></td>
+          </tr>
+          <tr>
+            <td colspan="2">Mã nhận diên: <b>{{data.code}}</b></td>
+          </tr>
+          <tr>
+            <td colspan="2">
+                <div (click)="onOpenBooking()" class="booking-btn item-time">
+                  <div class="icon-plush">
+                    Đặt lịch
+                  </div>
+                </div>
+             </td>
+          </tr>
+
+        </table>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <div class="history-c">
+          <ion-icon class="icon-t" name="calendar-outline"></ion-icon>
+          <div class="title-t">
+            Ngày thú cưng đến Petland
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <div class="time-visited">
+          <div *ngFor="let item of data.histories" class="item-lv1">
+            <div (click)="onEditHistory.emit(item)" class="item-time">
+              {{item.date | date: 'dd.MM.yyyy'}}
+            </div>
+          </div>
+          <div (click)="onCreateHistory.emit(data)" class="item-lv1">
+            <div class="item-time">
+              <div class="icon-plush">
+                <ion-icon name="add-outline"></ion-icon>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <div *ngIf="chartOptions" id="chart">
+          <apx-chart [series]="chartOptions.series" [chart]="chartOptions.chart" [dataLabels]="chartOptions.dataLabels"
+            [plotOptions]="chartOptions.plotOptions" [yaxis]="chartOptions.yaxis" [legend]="chartOptions.legend"
+            [fill]="chartOptions.fill" [stroke]="chartOptions.stroke" [tooltip]="chartOptions.tooltip"
+            [xaxis]="chartOptions.xaxis"></apx-chart>
+        </div>
+
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <app-pets-image-view *ngIf="popup" [data]="data.histories"></app-pets-image-view>
+    </ion-row>
+  </ion-grid>
+</div>

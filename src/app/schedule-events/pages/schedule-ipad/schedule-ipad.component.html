@@ -1,0 +1,126 @@
+<!-- fab placed to the bottom end -->
+<ion-fab style="
+    bottom: 53px;
+    right: 53px;
+    cursor: pointer;
+" (click)="addCalande()" vertical="bottom" horizontal="end" slot="fixed">
+  <div style="
+        width: 175px;
+        height: 56px;
+        background-color: #78bec3;
+        border-radius: 30px;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        border: 1px solid white;
+  ">
+    <div style="
+    padding-right: 7px;
+    color: white;
+    font-weight: bold;">
+      Tạo cuộc hẹn
+    </div>
+    <ion-fab-button style="
+        border: 2px solid white;
+        border-radius: 50%;">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </div>
+</ion-fab>
+<div class="schedule-main-content">
+  <div class="date-picker-for-mobile">
+    <div [formGroup]="form" style="
+          display: flex;
+          padding: 5px 0px 16px 0px;
+          justify-content: center;
+          align-content: center;
+          color: var(--color1);
+          font-size: 18px;
+          position: relative;
+      ">
+      <ion-icon (click)="preWeek()" style="
+            position: absolute;
+            top: 11px;
+            color: white;
+            left: 7px;
+            font-size: 32px;
+      " name="arrow-back-circle-outline"></ion-icon>
+      <ion-icon (click)="nextWeek()" style="
+           position: absolute;
+            top: 11px;
+            color: white;
+            right: 7px;
+            font-size: 32px;
+      " name="arrow-forward-circle-outline"></ion-icon>
+      <ion-select [formControlName]="'month'">
+        <ion-select-option *ngFor="let month of [0,1,2,3,4,5,6,7,8,9,10,11]" [value]="month">Tháng {{month + 1}}
+        </ion-select-option>
+      </ion-select>
+    </div>
+    <div style="display:  flex; padding: 5px 0px 16px 0px;">
+      <div class="header-time " *ngFor="let lable of [ 'CN' ,'T2', 'T3' , 'T4' , 'T5' , 'T6' , 'T7']">
+        {{lable}}
+      </div>
+    </div>
+    <div style="display: flex; padding: 5px 0px 0px 0px;">
+      <div class="body-time" *ngFor="let time of listDate ">
+        <div (click)="onChange(time)" [class.active-day]="dateToStr(viewDate) === dateToStr(time)" class="day-time">
+          <div *ngIf="eventDay[dateToStr(time)]" class="dot"></div>
+          {{time | date : 'd'}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="schedule-date-picker">
+
+    <nz-date-picker [nzDateRender]="tplRender" [nzShowToday]="!isMobile" nzInline [(ngModel)]="date"
+      (ngModelChange)="onChange($event)">
+    </nz-date-picker>
+    <ng-template #tplRender let-current>
+      <div title="{{dateToStr(current)}}" class="ant-picker-cell-inner custom-calander">
+        <div *ngIf="eventDay[dateToStr(current)]" class="dot"></div>
+        {{ current.getDate() }}
+      </div>
+    </ng-template>
+    <div class="action-group form-validation">
+      <ion-select (ionChange)="valueChange($event)" [value]="brand">
+        <ion-select-option *ngFor="let item of brands"  [value]="item.brandCode">{{item.brandName}}</ion-select-option>
+      </ion-select>
+      <ion-button (click)="setView(CalendarView.Month)" [class.active]="view === CalendarView.Month" expand="block"
+        fill="outline">Tháng</ion-button>
+      <ion-button expand="block" (click)="setView(CalendarView.Week)" [class.active]="view === CalendarView.Week"
+        fill="outline">Tuần</ion-button>
+      <ion-button (click)="setView(CalendarView.Day)" [class.active]="view === CalendarView.Day" expand="block"
+        fill="outline">Ngày</ion-button>
+    </div>
+  </div>
+  <div class="schedule-main-calander">
+    <div *ngIf="mobileSupportServive.isMobile" style="
+          display: block;
+          padding-top: 0px;
+          margin-top: 0px;
+    " class="action-group form-validation">
+      <ion-select style="
+        border-radius: 0px !important;
+        border: none !important;" (ionChange)="valueChange($event)" [value]="brand">
+        <ion-select-option value="BT">Chi nhánh Bình Thạnh</ion-select-option>
+        <ion-select-option value="Q9">Chi nhánh quận 9</ion-select-option>
+      </ion-select>
+    </div>
+    <div class="shadow-line" [ngSwitch]="view">
+      <mwl-calendar-month-view *ngSwitchCase="CalendarView.Month" [viewDate]="viewDate" [events]="events"
+        [refresh]="refresh" [activeDayIsOpen]="activeDayIsOpen" (dayClicked)="dayClicked($event.day)"
+        (eventClicked)="handleEvent(EventSchedule.CLICK , $event.event)" (eventTimesChanged)="eventTimesChanged($event)"
+        [locale]="locale">
+      </mwl-calendar-month-view>
+      <mwl-calendar-week-view *ngSwitchCase="CalendarView.Week" [viewDate]="viewDate" [events]="events"
+        [refresh]="refresh" (eventClicked)="handleEvent(EventSchedule.CLICK , $event.event)"
+        (eventTimesChanged)="eventTimesChanged($event)" [dayStartHour]="8" [dayEndHour]="20" [locale]="locale">
+      </mwl-calendar-week-view>
+      <mwl-calendar-day-view *ngSwitchCase="CalendarView.Day" [viewDate]="viewDate" [events]="events"
+        [refresh]="refresh" (eventClicked)="handleEvent(EventSchedule.CLICK , $event.event)"
+        (eventTimesChanged)="eventTimesChanged($event)" [dayStartHour]="8" [dayEndHour]="20" [locale]="locale">
+      </mwl-calendar-day-view>
+    </div>
+  </div>
+</div>

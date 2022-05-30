@@ -1,0 +1,66 @@
+<form [formGroup]="form" style="padding: 20px 30px 30px 30px;" class="form-validation" [class.submited]="submited">
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-icon (click)="onBack.emit(data)" class="icon-back" name="arrow-back-outline"></ion-icon>
+        <div class="title-name">
+          Thông tin thú cưng
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <div class="personal-image">
+          <label class="label">
+            <input type="file" (change)="fileChangeEvent($event)" />
+            <figure class="personal-figure">
+              <img [src]="form.controls[FormField.avatar].value" class="personal-avatar" alt="avatar">
+              <figcaption class="personal-figcaption">
+                <img src="assets/pets/camera-white.png">
+              </figcaption>
+            </figure>
+            <ion-icon class="avatar-custom-icon" name="camera-outline"></ion-icon>
+          </label>
+          <!-- <nz-progress *ngIf="percentageChanges$  | async as perc" [nzPercent]="perc.percentage" nzType="circle"></nz-progress> -->
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-input [formControlName]="FormField.name" placeholder="Tên thú cưng" type="text"></ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-input [formControlName]="FormField.birthDay" placeholder="Số tuổi hoặc ngày sinh " type="text"></ion-input>
+        <!-- <input [formControlName]="FormField.birthDay" placeholder="dd/mm/yyyy" type="text" /> -->
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-input [formControlName]="FormField.breed" placeholder="Loại" type="text"></ion-input>
+      </ion-col>
+      <ion-col>
+        <ion-input [formControlName]="FormField.species" placeholder="Giống" type="text"></ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-select [formControlName]="FormField.sex">
+          <ion-select-option value="MALE">Đực</ion-select-option>
+          <ion-select-option value="FEMALE">Cái</ion-select-option>
+        </ion-select>
+      </ion-col>
+      <ion-col>
+        <ion-input [formControlName]="FormField.code" placeholder="Mã nhận điện" type="text"></ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <button style="margin-top: 12px;" (click)="submit()" class="form-btn custom-font">
+          Hoàn thành
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</form>

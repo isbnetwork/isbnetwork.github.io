@@ -1,0 +1,114 @@
+<ion-content fullscreen="true">
+  <div class="ion-padding form-content">
+    <form [formGroup]="form" class="ion-padding form-validation" [class.submited]="submited">
+      <ion-row>
+        <ion-col>
+          <div style="display: flex; position: relative; justify-content: center; align-items: center;">
+            <ion-icon *ngIf="popup" (click)="onBack.emit(data)" class="icon-back" name="arrow-back-outline"></ion-icon>
+            <div class="title-name">
+              {{title}}
+            </div>
+            <div *ngIf="viewOnly">
+              <ion-icon *ngIf="isAdmin || isMine" (click)="onEdit.emit(data)" style="
+                position: absolute;
+                top: 2px;
+                right: 0px;
+                color: var(--color2);
+                font-size: 21px;
+                cursor: pointer;
+            " name="create-outline"></ion-icon>
+            </div>
+          </div>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <div class="personal-image">
+            <label class="label">
+              <input *ngIf="!viewOnly" type="file" (change)="fileChangeEvent($event)" />
+              <figure class="personal-figure">
+                <img [src]="form.controls[FormField.photoURL].value" class="personal-avatar" alt="avatar">
+                <figcaption *ngIf="!viewOnly" class="personal-figcaption">
+                  <img src="assets/pets/camera-white.png">
+                </figcaption>
+              </figure>
+            </label>
+            <!-- <nz-progress *ngIf="percentageChanges$  | async as perc" [nzPercent]="perc.percentage" nzType="circle"></nz-progress> -->
+            <ion-icon *ngIf="!viewOnly" class="avatar-custom-icon" name="camera-outline"></ion-icon>
+          </div>
+        </ion-col>
+      </ion-row>
+      <div *ngIf="viewOnly" class="panel">
+        <div class="lable-role"><b>{{fullName}}</b></div>
+        <hr>
+        <table>
+          <tr class="companyItem">
+            <td>Chức danh:</td>
+            <td>{{nameRole}}</td>
+          </tr>
+          <tr>
+            <td>Số điện thoại:</td>
+            <td>{{data.phone}}</td>
+          </tr>
+          <tr>
+            <td>Địa chỉ:</td>
+            <td>{{displayAddress}}</td>
+          </tr>
+          <tr>
+            <td>Trạng thái:</td>
+            <td>{{displayStatus}}</td>
+          </tr>
+        </table>
+        <!-- <ul>
+          <li><b>Chức danh:</b><span id="age">{{nameRole}}</span></li>
+          <li><b>Số điện thoại:</b><span id="phone">{{data.phone}}</span></li>
+          <li><b>Địa chỉ:</b><span id="address">{{displayAddress}}</span></li>
+          <li><b>Trạng thái:</b><span id="status">{{displayStatus}}</span></li>
+        </ul> -->
+      </div>
+      <div class="wrap-input" *ngIf="!viewOnly" style="margin-bottom: 16px;">
+        <!-- <input [formControlName]="FormField.displayName" class="input" type="text" type="search" name="fullName"
+          placeholder="Họ và tên thành viên"> -->
+        <div class="lable-role"><b>{{fullName}}</b></div>
+      </div>
+      <div *ngIf="!viewOnly && isAdmin" class="wrap-input" style="box-shadow: 0 4px 6px 0 #3947521f;">
+        <ion-row>
+          <ion-col>
+            <ion-select [formControlName]="FormField.role">
+              <ion-select-option value="ADMIN">Giám đốc</ion-select-option>
+              <ion-select-option value="DOCTOR">Bác sĩ</ion-select-option>
+              <ion-select-option value="CASHIER">Cashier</ion-select-option>
+            </ion-select>
+          </ion-col>
+        </ion-row>
+      </div>
+      <!-- <div *ngIf="viewOnly" class="wrap-input " style="box-shadow: 0 4px 6px 0 #3947521f;">
+        <div class="lable-title">Trạng thái</div>
+        <input [formControlName]="FormField.active" class="input" type="text" type="text" name="active" placeholder="">
+      </div> -->
+
+      <div class="wrap-input" *ngIf="!viewOnly">
+        <input [formControlName]="FormField.phone" class="input" type="text" type="text" name="phone"
+          placeholder="Nhập số điện thoại">
+      </div>
+      <div class="wrap-input" *ngIf="!viewOnly">
+        <input [formControlName]="FormField.address" class="input" type="text" type="text" name="address"
+          placeholder="Nhập địa chỉ">
+      </div>
+      <div class="container-form-btn">
+        <div *ngIf="isAdmin && !isMine">
+          <button *ngIf="viewOnly" (click)="acctiveOrBlockUser()" class="form-btn custom-font">
+            {{nameBtnActive}}
+          </button>
+        </div>
+        <button *ngIf="!viewOnly" (click)="register()" class="form-btn custom-font">
+          Hoàn thành
+        </button>
+        <button *ngIf="!viewOnly && isAdmin" (click)="deleteUser()" class="form-btn custom-font delete">
+          Xóa nhân viên
+        </button>
+      </div>
+    </form>
+  </div>
+</ion-content>

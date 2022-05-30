@@ -1,0 +1,134 @@
+ion-item {
+  cursor: pointer;
+}
+
+ion-content {
+  --background: var(--color2) ;
+}
+:host {
+  width: 100%;
+}
+.content-details {
+  border-left: 1px solid #dee2e6;
+  flex: 1;
+  background: white;
+}
+.content-list {
+  width: 100%;
+  background: var(--color2);
+  // height: calc(100vh - 52px);
+  .search-header {
+    padding-right: 20px;
+    padding-bottom: 20px;
+    padding-top: 50px;
+    padding-left: 30px;
+  }
+}
+.content-details, .mobile-support {
+  display:  none ;
+}
+.search-box {
+  display: flex;
+}
+
+@media only screen and (min-device-width: 768px) {
+  .hiden-on-desktop {
+    display: none !important;
+  }
+  :host {
+    width: 300px;
+    height: 100vh;
+  }
+  .content-list {
+    border-radius: 40px 0px 0px 40px;
+    width: 300px;
+    height: 100vh;
+    background: var(--color1);
+  }
+  .content-details  {
+    display:  block;
+  }
+  .btn-button-add  {
+    display:  flex !important;
+  }
+ .mobile-support {
+   display: block;;
+ }
+}
+.btn-button-add {
+  display: none;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 10px  16px 10px 16px;
+  width: 100%;
+  .item-add {
+    padding-left: 5px;
+    font-weight: bold;
+    font-size: 16px;
+    color: var(--color2);
+  }
+  &:hover {
+    background-color: #78bec385;
+    border-radius: 20px 0px  0px 20px;
+    .item-add {
+      color: #296e72;
+    }
+  }
+}
+.bold {
+  font-weight: bold;
+}
+:host {
+  .fab-vertical-bottom {
+  bottom: 95px;
+}
+}
+:host {
+  ion-fab{
+    --ion-safe-area-right: 55px;
+  }
+  ion-searchbar {
+    --padding-top: 0px;
+    padding-top: 0px;
+  }
+  ion-searchbar {
+
+    .searchbar-input.sc-ion-searchbar-md {
+      box-shadow:  none;
+      line-height: 40px !important;
+      border-radius: 9px;
+    }
+    --box-shadow : none;
+  }
+  ion-item {
+    @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      --background: #78bec385;
+      border-radius: 60px 0px  0px 60px;
+    }
+    }
+
+    &:active {
+      --background: #78bec385;
+      border-radius: 60px 0px  0px 60px;
+    }
+  }
+  ion-list {
+    &.flat-list {
+      height: calc(100vh - 211px);
+      overflow-y: auto;
+      padding-left: 8px;
+      border-radius: 30px 30px 0px 0px;
+      padding-bottom: 50px;
+    }
+
+  }
+  @media only screen and (min-device-width: 768px) {
+    ion-list {
+      &.flat-list {
+        height: calc(100vh - 220px);
+        border-radius: 0px;
+      }
+    }
+  }
+}

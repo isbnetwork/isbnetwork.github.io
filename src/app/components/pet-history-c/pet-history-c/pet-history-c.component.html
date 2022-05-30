@@ -1,0 +1,122 @@
+<app-header-mobile-c (onBack)="back($event)" *ngIf="popup"></app-header-mobile-c>
+<form [class.submited]="submited" [formGroup]="form" class="form-validation">
+  <ion-grid>
+    <ion-row>
+      <ion-icon *ngIf="!popup" (click)="onBack.emit(data)" class="icon-back" name="arrow-back-outline"></ion-icon>
+      <ion-col>
+        <div class="title-name">
+          Ngày thú cưng đến Petland
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <div class="lable-title">Từ</div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-select [formControlName]="FormField.day">
+          <ion-select-option *ngFor="let value of optionDay" [value]="value">{{value}}</ion-select-option>
+        </ion-select>
+      </ion-col>
+      <ion-col>
+        <ion-select [formControlName]="FormField.month">
+          <ion-select-option *ngFor="let value of optionMonth" [value]="value">{{value}}</ion-select-option>
+        </ion-select>
+      </ion-col>
+      <ion-col>
+        <ion-select [formControlName]="FormField.year">
+          <ion-select-option *ngFor="let value of optionYear" [value]="value">{{value}}</ion-select-option>
+        </ion-select>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <div class="custom-text" style="position: relative;">
+          <ion-input [formControlName]="FormField.temperature" placeholder="Nhiệt độ" type="text"></ion-input>
+          <div class="decorator">
+            độ C
+          </div>
+        </div>
+      </ion-col>
+      <ion-col>
+        <div class="custom-text" style="position: relative;">
+          <ion-input [formControlName]="FormField.weight" placeholder="Cân nặng" type="text"></ion-input>
+          <div class="decorator">
+            kg
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <div class="lable-title">Bệnh tích</div>
+        <ion-textarea [formControlName]="FormField.lesions" placeholder="Ghi chú dành cho nhân viên" [rows]="3">
+        </ion-textarea>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <div class="lable-title">Điều trị</div>
+        <ion-textarea [formControlName]="FormField.treatment" placeholder="Ghi chú dành cho nhân viên" [rows]="3">
+        </ion-textarea>
+      </ion-col>
+    </ion-row>
+    <ion-row class=" auto-complete">
+      <ion-col>
+        <div class="lable-title">Bác sĩ điều trị</div>
+        <ion-input [formControlName]="FormField.doctor" placeholder="" type="text" (input)="onSearchUser($event)">
+        </ion-input>
+        <!-- Dropdown Menu -->
+        <div *ngIf="openDrop" class="drop-down">
+          <table>
+            <tr class="item" *ngFor="let user of filterListUser" (click)="onSelectItem(user)">
+              <td>
+                <!-- <div class="avatar">
+          <img [src]="cus.avatar" alt="avatar" width="40" height="40">
+        </div> -->
+              </td>
+              <td>{{user.displayName}}</td>
+              <td>{{user.role}}</td>
+            </tr>
+          </table>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <div style="display: flex; position: relative; ">
+          <ion-icon *ngIf="pointer !== 0" (click)="preIitem()" class="icon-i-left" name="chevron-back-outline">
+          </ion-icon>
+          <ion-icon *ngIf="pointer + maxSize < itemThumb.length" (click)="nexItem()" class="icon-i-right"
+            name="chevron-forward-outline"></ion-icon>
+          <div class="item-img ">
+            <div class="drop-l">
+              <div class="personal-image">
+                <label class="label">
+                  <input multiple type="file" (change)="fileChangeEvent($event)" />
+                  <ion-icon name="add-outline"></ion-icon>
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="item-img" *ngFor="let item of listThumb">
+            <div class="item-thumb">
+              <ion-icon (click)="remove(item)" *ngIf="item.active" name="close-circle-outline"></ion-icon>
+              <img *ngIf="item.active && !mobileSupport.isMobile" nz-image height="100px" [nzSrc]="item.url" alt="" />
+              <img *ngIf="item.active && mobileSupport.isMobile" style="height: 100px;" [src]="item.url" alt="" />
+            </div>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <button style="margin-top: 12px;" (click)="submit()" class="form-btn custom-font">
+          Hoàn thành
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</form>
